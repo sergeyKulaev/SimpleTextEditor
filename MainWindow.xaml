@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SimpleTextEditor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="TextEditorSample" Height="300" Width="400">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed" />
+        <CommandBinding Command="ApplicationCommands.Save" Executed="Save_Executed" />
+    </Window.CommandBindings>
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top">
+            <Button Command="ApplicationCommands.Open">
+                <Image Source="/SimpleTextEditor;component/Images/folder.png" Width="16" Height="16" />
+            </Button>
+            <Button Command="ApplicationCommands.Save">
+                <Image Source="/SimpleTextEditor;component/Images/save.png" Width="16" Height="16" />
+            </Button>
+            <Separator/>
+            <ToggleButton Command="EditingCommands.ToggleBold" Name="btnBold">
+                <Image Source="/SimpleTextEditor;component/Images/bold_text.png" Width="16" Height="16" />
+            </ToggleButton>
+            <ToggleButton Command="EditingCommands.ToggleItalic" Name="btnItalic">
+                <Image Source="/SimpleTextEditor;component/Images/italic_text.png" Width="16" Height="16" />
+            </ToggleButton>
+            <ToggleButton Command="EditingCommands.ToggleUnderline" Name="btnUnderline">
+                <Image Source="/SimpleTextEditor;component/Images/underline_text.png" Width="16" Height="16" />
+            </ToggleButton>
+            <Separator/>
+            <ComboBox Name="cmbFontFamily" Width="150" SelectionChanged="cmbFontFamily_SelectionChanged" />
+            <ComboBox Name="cmbFontSize" Width="50" IsEditable="True" TextBoxBase.TextChanged="cmbFontSize_TextChanged"/>
+        </ToolBar>
+        <RichTextBox Name="rbtEditor" SelectionChanged="rtbEditor_SelectionChanged" />
+    </DockPanel>
 </Window>
